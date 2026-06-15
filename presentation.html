@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trach Maxim Digital Studio — Pitch Deck</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES (THEME)
+           =========================================== */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #0052e0;
+            --accent-glow: rgba(0, 82, 224, 0.15);
+            --border-color: #e2e8f0;
+
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* Slide design system constants */
+            --slide-padding: 80px 100px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out-smooth: cubic-bezier(0.85, 0, 0.15, 1);
+            --duration-normal: 1s;
+        }
+
+        /* Reset & Base locking */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===========================================
+           MANDATORY 16:9 PORT-BASE STYLES
+           =========================================== */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #090d16;
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+        }
+
+        .deck-viewport {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            background: #090d16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .deck-stage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            transform-origin: 0 0;
+            background: var(--bg-primary);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding);
+            background: var(--bg-primary);
+            
+            /* Slide Transitions (Cinematic Horizontal Pan) */
+            visibility: hidden;
+            opacity: 0;
+            transform: translateX(200px) scale(0.98);
+            transition: opacity var(--duration-normal) var(--ease-in-out-smooth),
+                        transform var(--duration-normal) var(--ease-in-out-smooth),
+                        visibility var(--duration-normal) var(--ease-in-out-smooth);
+        }
+
+        /* Slide states set by JavaScript */
+        .slide.active {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            z-index: 10;
+        }
+
+        .slide.past {
+            transform: translateX(-200px) scale(0.98);
+        }
+
+        .slide.future {
+            transform: translateX(200px) scale(0.98);
+        }
+
+        img, video, canvas, svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Slide navigation overlay chrome */
+        .deck-chrome {
+            position: absolute;
+            left: 100px;
+            right: 100px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        .deck-header {
+            top: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            color: var(--text-secondary);
+        }
+        .deck-footer {
+            bottom: 45px;
+        }
+        .deck-chrome span, .deck-chrome a {
+            pointer-events: auto;
+        }
+        .logo-text {
+            font-family: var(--font-display);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+        .logo-text span {
+            color: var(--accent);
+        }
+        .slide-indicator {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Outside stage navigation controls */
+        .deck-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+        }
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast, 0.2s);
+        }
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* ===========================================
+           ELEMENTS ENTRANCE ANIMATIONS
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--ease-out-expo),
+                        transform 0.8s var(--ease-out-expo),
+                        filter 0.8s var(--ease-out-expo);
+        }
+
+        .slide.active .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .slide.active .reveal-scale {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered Delay timings */
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .reveal:nth-child(5) { transition-delay: 0.5s; }
+
+        /* ===========================================
+           SLIDE CONTENT SPECIFIC LAYOUTS
+           =========================================== */
+        
+        /* Slide 1: Welcome */
+        .welcome-content {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .welcome-eyebrow {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+        .welcome-title {
+            font-family: var(--font-display);
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+        }
+        .welcome-desc {
+            font-size: 26px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 48px auto;
+            line-height: 1.5;
+        }
+
+        /* Slide Grid Layouts */
+        .slide-header-block {
+            margin-bottom: 60px;
+        }
+        .slide-eyebrow {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .slide-title {
+            font-family: var(--font-display);
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+
+        /* 2 Column Split Layout */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .services-list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .service-mini-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 36px;
+            transition: transform var(--transition-normal);
+        }
+        .service-mini-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        .service-mini-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Cases Layout */
+        .cases-slide-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+        .case-slide-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background-color: var(--bg-primary);
+        }
+        .case-slide-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+        .bg-gradient-blue { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); }
+        .bg-gradient-dark { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .bg-gradient-black { background: linear-gradient(135deg, #020617 0%, #0f172a 100%); }
+        
+        .case-slide-content {
+            padding: 28px;
+        }
+        .case-slide-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        .case-slide-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .case-slide-badges {
+            display: flex;
+            gap: 8px;
+        }
+        .badge-pill {
+            font-size: 12px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Why Us Layout */
+        .why-slide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+        .why-slide-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+        .why-slide-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .why-slide-item p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Contact Slide split */
+        .contact-slide-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .contact-slide-info h2 {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        .contact-slide-info p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+        .contact-pill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .contact-pill-item span {
+            color: var(--accent);
+        }
+
+        .contact-slide-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+        }
+        .contact-slide-box h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 28px;
+        }
+        .box-input {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        .box-textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        /* ===========================================
+           INLINE EDITING STYLES
+           =========================================== */
+        .edit-hotzone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            z-index: 10000;
+            cursor: pointer;
+        }
+        .edit-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            z-index: 10001;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .edit-toggle.show,
+        .edit-toggle.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .edit-toggle:hover {
+            transform: scale(1.05);
+        }
+        
+        [contenteditable="true"] {
+            outline: 2px dashed var(--accent);
+            outline-offset: 4px;
+            border-radius: 4px;
+            cursor: text;
+        }
+        [contenteditable="true"]:focus {
+            outline: 2px solid var(--accent);
+            background-color: rgba(0, 82, 224, 0.03);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Editor controls -->
+    <div class="edit-hotzone"></div>
+    <button class="edit-toggle" id="editToggle" title="Toggle Edit Mode (E)">✏️</button>
+
+    <div class="deck-viewport">
+        <!-- 16:9 Presentation Stage -->
+        <main class="deck-stage" id="deckStage">
+            
+            <!-- Global Chrome Header -->
+            <div class="deck-chrome deck-header">
+                <span class="logo-text">TRACH MAXIM <span>DIGITAL STUDIO</span></span>
+                <span>Division of Limotron</span>
+            </div>
+
+            <!-- Global Chrome Footer -->
+            <div class="deck-chrome deck-footer">
+                <a href="index.html" class="back-link">&larr; Вернуться на сайт</a>
+                <span class="slide-indicator" id="slideIndicator">1 / 5</span>
+            </div>
+
+            <!-- Slide 1: Welcome Title -->
+            <section class="slide welcome-slide active">
+                <div class="welcome-content">
+                    <div class="welcome-eyebrow reveal" contenteditable="false">Digital Studio</div>
+                    <h1 class="welcome-title reveal" contenteditable="false">Trach Maxim<br><span style="color: var(--accent);">Digital Studio</span></h1>
+                    <p class="welcome-desc reveal" contenteditable="false">Проектируем, кодим и внедряем ИИ-решения для роста вашего бизнеса.</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: Services -->
+            <section class="slide">
+                <div class="split-layout">
+                    <div class="slide-header-block">
+                        <div class="slide-eyebrow reveal" contenteditable="false">Услуги</div>
+                        <h2 class="slide-title reveal" contenteditable="false">Что мы делаем для бизнеса</h2>
+                    </div>
+                    <div class="services-list-grid">
+                        <div class="service-mini-card reveal">
+                            <h3 contenteditable="false">Мобильные приложения</h3>
+                            <p contenteditable="false">Кроссплатформенные приложения на React Native для iOS и Android с нативной производительностью.</p>
+                        </div>
+                        <div class="service-mini-card reveal">
+                            <h3 contenteditable="false">Веб-разработка</h3>
+                            <p contenteditable="false">Веб-сервисы, дашборды и лендинги любой сложности. Современный стек, чистый код и высокая скорость.</p>
+                        </div>
+                        <div class="service-mini-card reveal">
+                            <h3 contenteditable="false">ИИ и автоматизация</h3>
+                            <p contenteditable="false">Telegram-боты с ИИ, интеграция нейросетей и автоматизация бизнес-процессов любой сложности.</p>
+                        </div>
+                        <div class="service-mini-card reveal">
+                            <h3 contenteditable="false">UI/UX дизайн</h3>
+                            <p contenteditable="false">Проектируем интуитивные и эстетичные интерфейсы, которые повышают конверсию и удерживают пользователей.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Cases -->
+            <section class="slide">
+                <div class="slide-header-block" style="margin-bottom: 40px;">
+                    <div class="slide-eyebrow reveal" contenteditable="false">Кейсы</div>
+                    <h2 class="slide-title reveal" contenteditable="false">Реальные проекты — реальные результаты</h2>
+                </div>
+                <div class="cases-slide-wrapper">
+                    <div class="case-slide-card reveal">
+                        <div class="case-slide-image bg-gradient-blue">Mobile App</div>
+                        <div class="case-slide-content">
+                            <h3 contenteditable="false">FinTrack</h3>
+                            <p contenteditable="false">Приложение для управления личными финансами с аналитикой на основе ИИ.</p>
+                            <div class="case-slide-badges">
+                                <span class="badge-pill">React Native</span>
+                                <span class="badge-pill">AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-slide-card reveal">
+                        <div class="case-slide-image bg-gradient-dark">Web App</div>
+                        <div class="case-slide-content">
+                            <h3 contenteditable="false">Sales Dashboard</h3>
+                            <p contenteditable="false">Дашборд для анализа продаж и ключевых метрик в реальном времени.</p>
+                            <div class="case-slide-badges">
+                                <span class="badge-pill">Next.js</span>
+                                <span class="badge-pill">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-slide-card reveal">
+                        <div class="case-slide-image bg-gradient-black">AI Bot</div>
+                        <div class="case-slide-content">
+                            <h3 contenteditable="false">AI Assistant Bot</h3>
+                            <p contenteditable="false">Telegram-бот с ИИ для поддержки клиентов и автоматизации обработки заявок.</p>
+                            <div class="case-slide-badges">
+                                <span class="badge-pill">Python</span>
+                                <span class="badge-pill">OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Why Us -->
+            <section class="slide">
+                <div class="slide-header-block" style="margin-bottom: 60px;">
+                    <div class="slide-eyebrow reveal" contenteditable="false">Преимущества</div>
+                    <h2 class="slide-title reveal" contenteditable="false">Почему выбирают нас</h2>
+                </div>
+                <div class="why-slide-grid">
+                    <div class="why-slide-item reveal">
+                        <h3 contenteditable="false">Быстрый запуск MVP</h3>
+                        <p contenteditable="false">Запускаем первые версии продукта за недели, а не месяцы, чтобы проверить ваши гипотезы.</p>
+                    </div>
+                    <div class="why-slide-item reveal">
+                        <h3 contenteditable="false">Современный стек</h3>
+                        <p contenteditable="false">Используем актуальные надежные технологии и лучшие инженерные практики.</p>
+                    </div>
+                    <div class="why-slide-item reveal">
+                        <h3 contenteditable="false">ИИ-интеграция под ключ</h3>
+                        <p contenteditable="false">Внедряем искусственный интеллект для автоматизации и взрывного роста вашего бизнеса.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Contact -->
+            <section class="slide">
+                <div class="contact-slide-split">
+                    <div class="contact-slide-info">
+                        <h2 class="reveal" contenteditable="false">Готовы к росту вашего бизнеса?</h2>
+                        <p class="reveal" contenteditable="false">Свяжитесь с нами прямо сейчас для обсуждения деталей вашего проекта.</p>
+                        <div class="contact-pill-item reveal">
+                            <span>TG:</span> @trachmaxim
+                        </div>
+                        <div class="contact-pill-item reveal">
+                            <span>Email:</span> hello@trachmaxim.studio
+                        </div>
+                    </div>
+                    <div class="contact-slide-box reveal">
+                        <h3 contenteditable="false">Оставить заявку</h3>
+                        <input type="text" class="box-input" placeholder="Ваше имя" disabled>
+                        <input type="text" class="box-input" placeholder="Telegram / Email" disabled>
+                        <textarea class="box-input box-textarea" placeholder="Кратко опишите задачу" disabled></textarea>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Widescreen outside controls -->
+    <div class="deck-controls">
+        <button class="control-btn" id="btnPrev" title="Previous Slide (Left Arrow)">◀</button>
+        <button class="control-btn" id="btnNext" title="Next Slide (Right Arrow/Space)">▶</button>
+    </div>
+
+    <script>
+        /* ===========================================
+           SLIDE PRESENTATION DECK CONTROLLER
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.stage = document.getElementById('deckStage');
+                this.indicator = document.getElementById('slideIndicator');
+                
+                this.setupStageScale();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupClickNav();
+                this.loadEditedContent();
+                this.showSlide(0);
+            }
+
+            // Lock 16:9 stage scaling
+            setupStageScale() {
+                const scale = () => {
+                    const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+                    const x = (window.innerWidth - 1920 * factor) / 2;
+                    const y = (window.innerHeight - 1080 * factor) / 2;
+                    this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+                };
+                scale();
+                window.addEventListener('resize', scale);
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    // Skip nav if editing text
+                    if (document.activeElement.getAttribute('contenteditable') === 'true') {
+                        return;
+                    }
+                    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                        e.preventDefault();
+                        this.next();
+                    } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+                        e.preventDefault();
+                        this.prev();
+                    }
+                });
+            }
+
+            setupTouchNav() {
+                let startX = 0;
+                document.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                document.addEventListener('touchend', (e) => {
+                    if (document.activeElement.getAttribute('contenteditable') === 'true') return;
+                    const diffX = e.changedTouches[0].clientX - startX;
+                    if (diffX < -50) {
+                        this.next();
+                    } else if (diffX > 50) {
+                        this.prev();
+                    }
+                });
+            }
+
+            setupClickNav() {
+                document.getElementById('btnPrev').addEventListener('click', () => this.prev());
+                document.getElementById('btnNext').addEventListener('click', () => this.next());
+            }
+
+            prev() {
+                if (this.currentSlide > 0) {
+                    this.showSlide(this.currentSlide - 1);
+                }
+            }
+
+            next() {
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.showSlide(this.currentSlide + 1);
+                }
+            }
+
+            showSlide(index) {
+                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+                this.slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === this.currentSlide);
+                    slide.classList.toggle('visible', i === this.currentSlide);
+                    slide.classList.toggle('past', i < this.currentSlide);
+                    slide.classList.toggle('future', i > this.currentSlide);
+                });
+                
+                // Update chrome footer slide indicator
+                if (this.indicator) {
+                    this.indicator.textContent = `${this.currentSlide + 1} / ${this.slides.length}`;
+                }
+            }
+
+            loadEditedContent() {
+                const savedData = localStorage.getItem('trach_maxim_slides_data');
+                if (savedData) {
+                    try {
+                        const parsed = JSON.parse(savedData);
+                        const editableElements = document.querySelectorAll('[contenteditable]');
+                        editableElements.forEach((el, index) => {
+                            if (parsed[index] !== undefined) {
+                                el.innerHTML = parsed[index];
+                            }
+                        });
+                    } catch(e) {}
+                }
+            }
+        }
+
+        // ===========================================
+        // INLINE TEXT EDITOR LOGIC
+        // ===========================================
+        class SlidesEditor {
+            constructor() {
+                this.isActive = false;
+                this.toggleBtn = document.getElementById('editToggle');
+                this.hotzone = document.querySelector('.edit-hotzone');
+                this.editableElements = document.querySelectorAll('.slide [contenteditable]');
+                
+                this.setupHotzoneHover();
+                this.setupKeyboardTrigger();
+                this.setupFormSave();
+            }
+
+            setupHotzoneHover() {
+                let hideTimeout = null;
+                this.hotzone.addEventListener('mouseenter', () => {
+                    clearTimeout(hideTimeout);
+                    this.toggleBtn.classList.add('show');
+                });
+                this.hotzone.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        if (!this.isActive) this.toggleBtn.classList.remove('show');
+                    }, 400);
+                });
+                this.toggleBtn.addEventListener('mouseenter', () => {
+                    clearTimeout(hideTimeout);
+                });
+                this.toggleBtn.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        if (!this.isActive) this.toggleBtn.classList.remove('show');
+                    }, 400);
+                });
+                this.toggleBtn.addEventListener('click', () => {
+                    this.toggleEditMode();
+                });
+                this.hotzone.addEventListener('click', () => {
+                    this.toggleEditMode();
+                });
+            }
+
+            setupKeyboardTrigger() {
+                document.addEventListener('keydown', (e) => {
+                    if ((e.key === 'e' || e.key === 'E') && !e.target.getAttribute('contenteditable')) {
+                        this.toggleEditMode();
+                    }
+                });
+            }
+
+            toggleEditMode() {
+                this.isActive = !this.isActive;
+                this.toggleBtn.classList.toggle('active', this.isActive);
+                this.toggleBtn.innerHTML = this.isActive ? '💾' : '✏️';
+                
+                this.editableElements.forEach(el => {
+                    el.setAttribute('contenteditable', this.isActive ? 'true' : 'false');
+                });
+
+                if (!this.isActive) {
+                    this.saveContent();
+                }
+            }
+
+            saveContent() {
+                const data = [];
+                this.editableElements.forEach(el => {
+                    data.push(el.innerHTML);
+                });
+                localStorage.setItem('trach_maxim_slides_data', JSON.stringify(data));
+            }
+
+            setupFormSave() {
+                // Auto-save when leaving editable field focus
+                this.editableElements.forEach(el => {
+                    el.addEventListener('blur', () => {
+                        if (this.isActive) this.saveContent();
+                    });
+                });
+            }
+        }
+
+        const deck = new SlidePresentation();
+        const editor = new SlidesEditor();
+    </script>
+</body>
+</html>

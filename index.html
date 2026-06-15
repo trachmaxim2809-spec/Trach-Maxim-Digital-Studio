@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trach Maxim Digital Studio — Проектируем, кодим и внедряем ИИ-решения</title>
+    <meta name="description" content="Trach Maxim Digital Studio — разработка мобильных приложений, веб-сервисов и ИИ-решений для роста вашего бизнеса. Быстро, качественно, современно.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Division Banner -->
+    <div class="top-division-banner">
+        <div class="container">
+            <div class="division-content">
+                <svg class="division-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12,2 22,22 2,22" />
+                </svg>
+                <span>A Division of Limotron</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-block">
+                <span class="logo-title">TRACH MAXIM</span>
+                <span class="logo-subtitle">DIGITAL STUDIO</span>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="#services" class="nav-item">Услуги</a>
+                <a href="#cases" class="nav-item">Кейсы</a>
+                <a href="#process" class="nav-item">Процесс</a>
+                <a href="#about" class="nav-item">О нас</a>
+                <a href="#contact" class="nav-item">Контакты</a>
+            </nav>
+
+            <div class="header-cta-group">
+                <a href="https://t.me/trachmaxim" target="_blank" class="btn btn-telegram header-cta-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.33 3.68-1.5 4.44-1.76 4.94-1.77.11 0 .36.03.52.16.13.11.17.27.19.38 0 .04.01.16 0 .22z"/>
+                    </svg>
+                    <span>Обсудить проект в Telegram</span>
+                </a>
+                
+                <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer">
+        <div class="drawer-header">
+            <a href="#" class="logo-block">
+                <span class="logo-title">TRACH MAXIM</span>
+                <span class="logo-subtitle">DIGITAL STUDIO</span>
+            </a>
+            <button class="drawer-close" aria-label="Закрыть меню">&times;</button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="#services" class="mobile-nav-item">Услуги</a>
+            <a href="#cases" class="mobile-nav-item">Кейсы</a>
+            <a href="#process" class="mobile-nav-item">Процесс</a>
+            <a href="#about" class="mobile-nav-item">О нас</a>
+            <a href="#contact" class="mobile-nav-item">Контакты</a>
+        </nav>
+        <div class="drawer-cta">
+            <a href="https://t.me/trachmaxim" target="_blank" class="btn btn-telegram btn-block">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.33 3.68-1.5 4.44-1.76 4.94-1.77.11 0 .36.03.52.16.13.11.17.27.19.38 0 .04.01.16 0 .22z"/>
+                </svg>
+                <span>Обсудить проект в Telegram</span>
+            </a>
+        </div>
+    </div>
+    <div class="drawer-overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid-container">
+            <div class="hero-text-block">
+                <div class="hero-eyebrow reveal-hero">DIGITAL STUDIO</div>
+                <h1 class="hero-heading reveal-hero">
+                    Trach Maxim<br>
+                    <span class="color-accent">Digital Studio</span>
+                </h1>
+                <p class="hero-subheading reveal-hero">
+                    Проектируем, кодим и внедряем ИИ-решения для роста вашего бизнеса.
+                </p>
+                <div class="hero-buttons reveal-hero">
+                    <a href="https://t.me/trachmaxim" target="_blank" class="btn btn-telegram">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.33 3.68-1.5 4.44-1.76 4.94-1.77.11 0 .36.03.52.16.13.11.17.27.19.38 0 .04.01.16 0 .22z"/>
+                        </svg>
+                        <span>Обсудить проект в Telegram</span>
+                    </a>
+                    <a href="#cases" class="btn btn-outline">
+                        <span>Смотреть кейсы</span>
+                        <svg class="arrow-down-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <polyline points="19 12 12 19 5 12"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-mockup-block reveal-hero">
+                <!-- Glowing effect in background -->
+                <div class="mockup-bg-glow"></div>
+                <!-- Floating Blue Dots matching mockup -->
+                <div class="floating-dot dot-1"></div>
+                <div class="floating-dot dot-2"></div>
+                <!-- Smartphone Mockup -->
+                <div class="device-phone">
+                    <div class="phone-screen">
+                        <!-- Top status bar -->
+                        <div class="phone-status-bar">
+                            <span class="status-time">09:41</span>
+                            <div class="phone-island"></div>
+                            <div class="status-icons">
+                                <svg class="status-wifi" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.3 3 3.1 4.7 0 7.6L12 21L24 7.6C20.9 4.7 16.7 3 12 3Z"/></svg>
+                                <svg class="status-battery" viewBox="0 0 24 24" fill="currentColor"><path d="M17 5H3C1.9 5 1 5.9 1 7V17C1 18.1 1.9 19 3 19H17C18.1 19 19 18.1 19 17V7C19 5.9 18.1 5 17 5ZM21 9V15H23V9H21Z"/></svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Internal App UI -->
+                        <div class="app-container">
+                            <header class="app-header">
+                                <span>Overview</span>
+                                <svg class="app-menu-dots" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+                            </header>
+                            
+                            <div class="app-balance-card">
+                                <span class="balance-label">Total Balance</span>
+                                <h3 class="balance-amount">$24,250.50</h3>
+                            </div>
+                            
+                            <!-- Mini line chart -->
+                            <div class="app-chart-wrap">
+                                <svg class="spark-chart" viewBox="0 0 100 40" preserveAspectRatio="none">
+                                    <path d="M0,35 Q15,38 30,22 T60,15 T90,5 L100,5" fill="none" stroke="#0052e0" stroke-width="2.5" stroke-linecap="round"></path>
+                                    <path d="M0,35 Q15,38 30,22 T60,15 T90,5 L100,5 L100,40 L0,40 Z" fill="url(#chart-grad)" opacity="0.15"></path>
+                                    <defs>
+                                        <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#0052e0"/>
+                                            <stop offset="100%" stop-color="#0052e0" stop-opacity="0"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            
+                            <!-- Transactions list -->
+                            <div class="app-transactions">
+                                <h4 class="transactions-title">Transactions</h4>
+                                <div class="transaction-item">
+                                    <div class="t-icon-container">
+                                        <svg class="t-svg-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 22c-1.31.05-1.72-.75-3.22-.75-1.5 0-1.96.72-3.22.77-1.3.05-2.28-1.32-3.12-2.53C4.4 17.08 3.13 12.08 4.9 9.03c.88-1.52 2.45-2.48 4.16-2.5 1.3-.02 2.52.88 3.32.88.8 0 2.27-.1 3.81.47 1.48.55 2.64 1.7 3.29 2.87-3.07 1.85-2.58 5.8.18 6.94-.57 1.42-1.3 2.84-2.14 4.14M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.49-.6.69-1.12 1.84-.98 2.95 1.1.08 2.24-.57 2.91-1.38z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="t-details">
+                                        <span class="t-name">Apple Store</span>
+                                        <span class="t-time">12:30 PM</span>
+                                    </div>
+                                    <span class="t-amount negative">-$179.99</span>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="t-icon-container">
+                                        <svg class="t-svg-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M2 21H22V23H2V21M20 3H4v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V3M6 5H18V13c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5M20 8H23V12H20V8Z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="t-details">
+                                        <span class="t-name">Coffee Shop</span>
+                                        <span class="t-time">08:15 AM</span>
+                                    </div>
+                                    <span class="t-amount negative">-$5.49</span>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="t-icon-container spotify">
+                                        <svg class="t-svg-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.785-8.892-.983-.335.076-.67-.135-.747-.47-.077-.337.136-.672.472-.748 3.854-.88 7.15-.502 9.82 1.133.297.182.39.568.207.861zm1.226-2.723c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.08-1.182-.413.125-.845-.107-.97-.52-.125-.413.108-.844.52-.97 3.668-1.112 8.237-.57 11.343 1.34.368.226.488.707.261 1.072zm.105-2.835C14.392 8.76 8.575 8.567 5.2 9.59c-.54.163-1.11-.147-1.27-.687-.165-.54.147-1.11.687-1.27 3.872-1.175 10.3-.95 14.37 1.47.487.29.647.923.357 1.41-.29.488-.924.648-1.41.358z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="t-details">
+                                        <span class="t-name">Spotify</span>
+                                        <span class="t-time">Yesterday</span>
+                                    </div>
+                                    <span class="t-amount positive">+$2,450.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Three Feature Columns Below Hero -->
+        <div class="hero-features-bar">
+            <div class="container features-grid reveal-group">
+                <div class="feature-pillar reveal-item">
+                    <div class="pillar-icon-box">
+                        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <polyline points="9 11 11 13 15 9"/>
+                        </svg>
+                    </div>
+                    <div class="pillar-content">
+                        <h3>100% Clean Code</h3>
+                        <p>Чистый и поддерживаемый код по лучшим практикам</p>
+                    </div>
+                </div>
+                
+                <div class="feature-pillar reveal-item">
+                    <div class="pillar-icon-box">
+                        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                    </div>
+                    <div class="pillar-content">
+                        <h3>AI-Powered Development</h3>
+                        <p>Интегрируем ИИ и автоматизацию в ваши продукты</p>
+                    </div>
+                </div>
+
+                <div class="feature-pillar reveal-item">
+                    <div class="pillar-icon-box">
+                        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <div class="pillar-content">
+                        <h3>Fast MVP Delivery</h3>
+                        <p>Быстрый запуск MVP и проверка гипотез</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section-block">
+        <div class="container">
+            <div class="section-label reveal-single">УСЛУГИ</div>
+            <h2 class="section-heading-main reveal-single">Что мы делаем</h2>
+            <p class="section-subtext-main reveal-single">
+                Создаем цифровые продукты, которые помогают бизнесу автоматизировать процессы и достигать результатов.
+            </p>
+
+            <div class="services-grid-wrapper reveal-group">
+                <!-- Card 1 -->
+                <div class="service-detail-card reveal-item">
+                    <div class="service-icon-container">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Мобильные приложения</h3>
+                    <p class="service-card-desc">
+                        Кроссплатформенные приложения на React Native для iOS и Android с нативной производительностью.
+                    </p>
+                    <a href="#contact" class="service-card-link">
+                        <span>Подробнее</span>
+                        <svg class="arrow-right-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-detail-card reveal-item">
+                    <div class="service-icon-container">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="2" y1="10" x2="22" y2="10"/>
+                            <circle cx="6" cy="6" r="1"/>
+                            <circle cx="10" cy="6" r="1"/>
+                            <circle cx="14" cy="6" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Веб-разработка</h3>
+                    <p class="service-card-desc">
+                        Веб-сервисы, дашборды и лендинги любой сложности. Современный стек, чистый код и высокая скорость.
+                    </p>
+                    <a href="#contact" class="service-card-link">
+                        <span>Подробнее</span>
+                        <svg class="arrow-right-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-detail-card reveal-item">
+                    <div class="service-icon-container">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.59 4.59A2 2 0 1 1 11 8H9m10.59 11.41A2 2 0 1 1 18 16h1.5M9 16H8a2 2 0 1 1 0-4h1m9.5-6.5A2.5 2.5 0 0 1 20 8v1a2 2 0 0 1-2 2h-1"/>
+                            <path d="M12 2v20M17 22H7"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">ИИ и автоматизация</h3>
+                    <p class="service-card-desc">
+                        Telegram-боты с ИИ, интеграция нейросетей и автоматизация бизнес-процессов любой сложности.
+                    </p>
+                    <a href="#contact" class="service-card-link">
+                        <span>Подробнее</span>
+                        <svg class="arrow-right-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-detail-card reveal-item">
+                    <div class="service-icon-container">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">UI/UX дизайн</h3>
+                    <p class="service-card-desc">
+                        Проектируем интуитивные и эстетичные интерфейсы, которые повышают конверсию и удерживают пользователей.
+                    </p>
+                    <a href="#contact" class="service-card-link">
+                        <span>Подробнее</span>
+                        <svg class="arrow-right-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mobile-services-more">
+                <a href="#contact" class="btn btn-outline btn-block">Все услуги &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases/Portfolio Section -->
+    <section id="cases" class="cases-section-block">
+        <div class="container">
+            <div class="cases-section-header">
+                <div>
+                    <div class="section-label reveal-single">КЕЙСЫ</div>
+                    <h2 class="section-heading-main text-left reveal-single">Реальные проекты — реальные результаты</h2>
+                    <p class="section-subtext-main text-left reveal-single">
+                        Мы не просто пишем код. Мы создаем работающие продукты для бизнеса.
+                    </p>
+                </div>
+                <div class="cases-header-action reveal-single">
+                    <a href="https://github.com/trachmaxim" target="_blank" class="cases-github-link">
+                        <span>Все кейсы на GitHub</span>
+                        <svg class="arrow-right-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="cases-grid-wrapper reveal-group">
+                <!-- Case 1 -->
+                <div class="case-card-item reveal-item">
+                    <div class="case-image-holder vibe-bg-1">
+                        <span class="case-tag">Mobile App</span>
+                        <div class="case-mock-screen phone-screen-mock">
+                            <!-- Small dynamic UI simulation inside case card -->
+                            <div class="case-mock-nav"></div>
+                            <div class="case-mock-chart">
+                                <div class="mock-bar" style="height: 40%"></div>
+                                <div class="mock-bar" style="height: 65%"></div>
+                                <div class="mock-bar" style="height: 80%"></div>
+                                <div class="mock-bar" style="height: 50%"></div>
+                                <div class="mock-bar" style="height: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-content-wrapper">
+                        <h3 class="case-title">FinTrack</h3>
+                        <p class="case-desc">
+                            Мобильное приложение для управления личными финансами с аналитикой на основе ИИ.
+                        </p>
+                        <div class="case-tech-badges">
+                            <span class="tech-pill">React Native</span>
+                            <span class="tech-pill">AI</span>
+                            <span class="tech-pill">Firebase</span>
+                        </div>
+                        <div class="case-buttons">
+                            <a href="#contact" class="btn btn-primary btn-sm">
+                                <span>Live Demo</span>
+                                <svg class="diagonal-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/trachmaxim" target="_blank" class="btn btn-dark btn-sm">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card-item reveal-item">
+                    <div class="case-image-holder vibe-bg-2">
+                        <span class="case-tag">Web App</span>
+                        <div class="case-mock-screen web-screen-mock">
+                            <!-- Small dynamic Dashboard representation -->
+                            <div class="case-mock-sidebar"></div>
+                            <div class="case-mock-panel">
+                                <div class="panel-header"></div>
+                                <div class="panel-widgets">
+                                    <div class="widget-circle"></div>
+                                    <div class="widget-lines">
+                                        <div class="w-line"></div>
+                                        <div class="w-line" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-content-wrapper">
+                        <h3 class="case-title">Sales Dashboard</h3>
+                        <p class="case-desc">
+                            Дашборд для анализа продаж и ключевых метрик в реальном времени.
+                        </p>
+                        <div class="case-tech-badges">
+                            <span class="tech-pill">Next.js</span>
+                            <span class="tech-pill">TypeScript</span>
+                            <span class="tech-pill">PostgreSQL</span>
+                        </div>
+                        <div class="case-buttons">
+                            <a href="#contact" class="btn btn-primary btn-sm">
+                                <span>Live Demo</span>
+                                <svg class="diagonal-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></svg>
+                                </a>
+                            <a href="https://github.com/trachmaxim" target="_blank" class="btn btn-dark btn-sm">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card-item reveal-item">
+                    <div class="case-image-holder vibe-bg-3">
+                        <span class="case-tag">AI Bot</span>
+                        <div class="case-mock-screen chat-screen-mock">
+                            <!-- Small Chat representation -->
+                            <div class="chat-messages-mock">
+                                <div class="msg bubble-left"></div>
+                                <div class="msg bubble-right"></div>
+                                <div class="msg bubble-left" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-content-wrapper">
+                        <h3 class="case-title">AI Assistant Bot</h3>
+                        <p class="case-desc">
+                            Telegram-бот с ИИ для автоматизации поддержки клиентов и обработки заявок.
+                        </p>
+                        <div class="case-tech-badges">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">OpenAI</span>
+                            <span class="tech-pill">Telegram API</span>
+                        </div>
+                        <div class="case-buttons">
+                            <a href="#contact" class="btn btn-primary btn-sm">
+                                <span>Live Demo</span>
+                                <svg class="diagonal-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></svg>
+                                </a>
+                            <a href="https://github.com/trachmaxim" target="_blank" class="btn btn-dark btn-sm">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-cases-more">
+                <a href="https://github.com/trachmaxim" target="_blank" class="btn btn-outline btn-block">Все кейсы на GitHub &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="about" class="why-choose-section">
+        <div class="container">
+            <div class="section-label reveal-single">ПОЧЕМУ ВЫБИРАЮТ НАС</div>
+            <h2 class="section-heading-main reveal-single">Мы фокусируемся на вашем результате</h2>
+            <p class="section-subtext-main reveal-single">
+                Наш подход — это сочетание технологий, скорости и бизнес-ориентированности.
+            </p>
+
+            <div class="why-grid-wrapper reveal-group">
+                <!-- Point 1 -->
+                <div class="why-card-item reveal-item">
+                    <div class="why-icon-box">
+                        <svg class="why-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <div class="why-text-block">
+                        <h3>Быстрый запуск MVP</h3>
+                        <p>Запускаем первые версии продукта за недели, а не месяцы.</p>
+                    </div>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="why-card-item reveal-item">
+                    <div class="why-icon-box">
+                        <svg class="why-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <div class="why-text-block">
+                        <h3>Современный стек</h3>
+                        <p>Используем актуальные технологии и лучшие практики.</p>
+                    </div>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="why-card-item reveal-item">
+                    <div class="why-icon-box">
+                        <svg class="why-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <div class="why-text-block">
+                        <h3>AI-интеграция под ключ</h3>
+                        <p>Внедряем ИИ для автоматизации и роста вашего бизнеса.</p>
+                    </div>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="why-card-item reveal-item">
+                    <div class="why-icon-box">
+                        <svg class="why-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div class="why-text-block">
+                        <h3>Адаптация под все устройства</h3>
+                        <p>Ваш продукт будет отлично работать на любом устройстве.</p>
+                    </div>
+                </div>
+
+                <!-- Point 5 -->
+                <div class="why-card-item reveal-item">
+                    <div class="why-icon-box">
+                        <svg class="why-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="why-text-block">
+                        <h3>Поддержка после запуска</h3>
+                        <p>Сопровождаем и развиваем ваш продукт после релиза.</p>
+                    </div>
+                </div>
+
+                <!-- Point 6 -->
+                <div class="why-card-item reveal-item">
+                    <div class="why-icon-box">
+                        <svg class="why-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <div class="why-text-block">
+                        <h3>Прозрачность и коммуникация</h3>
+                        <p>Всегда на связи и предоставляем понятные отчеты о работе.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead capture / CTA Form Section -->
+    <section id="contact" class="lead-form-section">
+        <div class="container">
+            <div class="section-label reveal-single">ОБСУДИМ ВАШ ПРОЕКТ?</div>
+            <h2 class="section-heading-main text-left-desktop reveal-single">Готовы к росту вашего бизнеса?</h2>
+            <p class="section-subtext-main text-left-desktop reveal-single">
+                Расскажите о своей задаче — предложим лучшее решение.
+            </p>
+
+            <div class="lead-split-layout reveal-group">
+                <!-- Telegram card callout -->
+                <a href="https://t.me/trachmaxim" target="_blank" class="tg-callout-card reveal-item">
+                    <div class="tg-icon-circle">
+                        <svg class="tg-large-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.33 3.68-1.5 4.44-1.76 4.94-1.77.11 0 .36.03.52.16.13.11.17.27.19.38 0 .04.01.16 0 .22z"/>
+                        </svg>
+                    </div>
+                    <div class="tg-callout-content">
+                        <h3>Обсудить проект в Telegram</h3>
+                        <p>Обычно отвечаем в течение 1 часа</p>
+                    </div>
+                    <svg class="tg-callout-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+
+                <!-- Contact form card -->
+                <div class="form-card-container reveal-item">
+                    <h3 class="form-card-title">Или оставьте заявку</h3>
+                    <form id="agency-lead-form" class="lead-form">
+                        <div class="form-group-row">
+                            <div class="form-field-group">
+                                <label for="input-name" class="field-label">Как к вам обращаться?</label>
+                                <input type="text" id="input-name" class="form-text-input" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-field-group">
+                                <label for="input-contact" class="field-label">Telegram / Email</label>
+                                <input type="text" id="input-contact" class="form-text-input" placeholder="@username или email" required>
+                            </div>
+                        </div>
+                        <div class="form-field-group">
+                            <label for="input-message" class="field-label">Опишите задачу</label>
+                            <textarea id="input-message" class="form-textarea-input" placeholder="Кратко опишите ваш проект или идею" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block form-submit-btn">Отправить заявку</button>
+                        <p class="form-privacy-note">
+                            Нажимая кнопку, вы соглашаетесь с <a href="#" class="privacy-link">политикой конфиденциальности</a>.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid-container">
+            <div class="footer-brand-info">
+                <a href="#" class="logo-block">
+                    <span class="logo-title">TRACH MAXIM</span>
+                    <span class="logo-subtitle">DIGITAL STUDIO</span>
+                </a>
+                <p class="brand-tagline">
+                    Проектируем, кодим и внедряем ИИ-решения для роста вашего бизнеса.
+                </p>
+                <span class="footer-division-label">A Division of Limotron</span>
+                <div class="footer-social-links">
+                    <a href="https://t.me/trachmaxim" target="_blank" class="social-icon-link" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.33 3.68-1.5 4.44-1.76 4.94-1.77.11 0 .36.03.52.16.13.11.17.27.19.38 0 .04.01.16 0 .22z"/></svg>
+                    </a>
+                    <a href="https://github.com/trachmaxim" target="_blank" class="social-icon-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Услуги</h4>
+                <ul>
+                    <li><a href="#services">Мобильные приложения</a></li>
+                    <li><a href="#services">Веб-разработка</a></li>
+                    <li><a href="#services">ИИ и автоматизация</a></li>
+                    <li><a href="#services">UI/UX дизайн</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#cases">Кейсы</a></li>
+                    <li><a href="#process">Процесс</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Контакты</h4>
+                <ul>
+                    <li class="contact-detail-item">
+                        <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.33 3.68-1.5 4.44-1.76 4.94-1.77.11 0 .36.03.52.16.13.11.17.27.19.38 0 .04.01.16 0 .22z"/></svg>
+                        <a href="https://t.me/trachmaxim" target="_blank">@trachmaxim</a>
+                    </li>
+                    <li class="contact-detail-item">
+                        <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:hello@trachmaxim.studio">hello@trachmaxim.studio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom-line">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2024 Trach Maxim Digital Studio. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal Popup -->
+    <div class="success-popup-modal" id="lead-success-modal">
+        <div class="modal-box">
+            <div class="modal-checkmark-box">
+                <svg class="checkmark-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <h3 class="modal-title-text">Заявка отправлена!</h3>
+            <p class="modal-description-text">
+                Спасибо за обращение. Мы изучим ваше сообщение и ответим вам в течение часа.
+            </p>
+            <button class="btn btn-primary modal-action-close">Отлично</button>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="app.js"></script>
+</body>
+</html>
