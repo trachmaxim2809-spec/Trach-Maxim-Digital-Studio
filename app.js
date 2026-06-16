@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Form validation
             if (!nameInput.value.trim() || !contactInput.value.trim() || !messageInput.value.trim()) {
-                alert('Пожалуйста, заполните все обязательные поля.');
+                alert('Будь ласка, заповніть усі обов\'язкові поля.');
                 return;
             }
 
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     items.forEach((item, index) => {
                         setTimeout(() => {
                             item.classList.add('active');
-                        }, index * 120); // Smooth cascading delay
+                        }, index * 150); // Smooth cascading delay
                     });
                     observer.unobserve(target);
                 }
